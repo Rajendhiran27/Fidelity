@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Restaurant Table Reservation</title>
+    <style>
+        h1 {
+            color: #FF0000;
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+        }
+        div {
+            color: #0F0F0F;
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+        }
+        #result {
+            font-size: 15px;
+        }
+        table {
+            background-color: #F6B60F;
+            margin-left: 35%;
+            border-spacing: 5px;
+            border-width: 10%;
+            border-style: none;
+            text-align: left;
+        }
+    </style>
+    <script>
+        function reserveTable() {
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const numberOfGuests = document.getElementById('numberOfGuests').value;
+            const dateOfVisit = document.getElementById('dateOfVisit').value;
+
+           
+            const mobilePattern = /^[789]\d{9}$/;
+            if (!mobilePattern.test(mobileNumber)) {
+                alert("Mobile number must start with 9/8/7 and contain 10 digits.");
+                return false;
+            }
+            if (numberOfGuests < 2 || numberOfGuests > 20) {
+                alert("Number of guests must be between 2 and 20.");
+                return false;
+            }
+
+            const advanceAmount = 500;
+            document.getElementById('result').innerHTML = 
+                `The Advance Amount Rs.${advanceAmount} is paid successfully.<br>Your Table is Reserved and Confirmed on ${dateOfVisit}`;
+            return false; 
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Online Restaurant Table Reservation</h1>
+    <div>
+        <form onsubmit="return reserveTable();">
+            <label for="name">Guest Name:</label>
+            <input type="text" id="name" name="name" placeholder="Guest Name" required><br><br>
+
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Mobile Number" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="numberOfGuests">Number Of Guests:</label>
+            <input type="number" id="numberOfGuests" name="numberOfGuests" placeholder="Enter Number Of Guests" min="2" max="20" required><br><br>
+
+            <label>Session Type:</label>
+            <input type="radio" id="lunch" name="sessionType" value="Lunch" required>
+            <label for="lunch">Lunch</label>
+            <input type="radio" id="dinner" name="sessionType" value="Dinner">
+            <label for="dinner">Dinner</label><br><br>
+
+            <label for="dateOfVisit">Date Of Visit:</label>
+            <input type="text" id="dateOfVisit" name="dateOfVisit" placeholder="dd/MM/yyyy" required><br><br>
+
+            <label for="duration">Duration:</label>
+            <input type="text" id="duration" name="duration" placeholder="Enter Duration" required><br><br>
+
+            <label for="tableName">Select Table:</label>
+            <select id="tableName" name="tableName" required>
+                <option value="TA1">TA1</option>
+                <option value="TA2">TA2</option>
+                <option value="TA3">TA3</option>
+                <option value="TA4">TA4</option>
+                <option value="TB1">TB1</option>
+                <option value="TB2">TB2</option>
+                <option value="TB3">TB3</option>
+                <option value="TB4">TB4</option>
+            </select><br><br>
+
+            <label>Payment Mode:</label>
+            <input type="radio" id="credit" name="paymentMode" value="Credit Card" required>
+            <label for="credit">Credit Card</label>
+            <input type="radio" id="debit" name="paymentMode" value="Debit Card">
+            <label for="debit">Debit Card</label><br><br>
+
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter Card Number" required><br><br>
+
+            <label for="cvvNumber">CVV Number:</label>
+            <input type="text" id="cvvNumber" name="cvvNumber" placeholder="Enter cvv Number" required><br><br>
+
+            <input type="submit" value="Reserve">
+            <input type="reset" value="Clear">
+        </form>
+    </div>
+    <div id="result"></div>
+
+</body>
+</html>

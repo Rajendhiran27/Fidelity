@@ -1,0 +1,123 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+h1 {
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 2.5em;
+    line-height: 1.5; 
+    margin-bottom: 20px;
+}
+
+.tr1 {
+    background-color: #ff0080; 
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in; 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.theader {
+    background-color: #800000; 
+}
+
+#ex1, #vg1 {
+    background-color: #00ff00;
+    animation: highlight 1s ease-in-out; 
+}
+
+#go1 {
+    background-color: #ffff00; 
+}
+
+#av1 {
+    background-color: #d3d3d3; 
+    color: #ffffff;
+}
+
+#bal {
+    background-color: #ff0000;
+    color: #ffffff; 
+}
+
+table {
+    margin: 0 auto;
+    margin-left: 0;
+    background-color: #F0F0F0; 
+    width: 90%; 
+    border-collapse: collapse; 
+}
+
+td {
+    text-align: center;
+    padding: 10px; 
+    transition: background-color 0.3s; 
+}
+
+caption {
+    text-align: left; 
+    font-weight: bold; 
+    font-size: 1.5em; 
+}
+
+.description01 {
+    font-style: italic; 
+    color: #F500FF;
+    line-height: 1.5; 
+    font-weight: bold; 
+}
+
+.description07 {
+    font-style: italic; 
+    color: #FF4500; 
+    font-weight: bold; 
+}
+
+em {
+    color: #FF0000; 
+    font-weight: bold; 
+}
+
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em; 
+    }
+
+    table {
+        width: 100%; 
+    }
+
+    td {
+        font-size: 1em; 
+    }
+}
+
+@keyframes highlight {
+    0% {
+        background-color: #00ff00;
+    }
+    50% {
+        background-color: #90ee90;
+    }
+    100% {
+        background-color: #00ff00;
+    }
+}

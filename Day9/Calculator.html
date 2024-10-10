@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url(https://img.freepik.com/free-photo/business-office-sence_1387-668.jpg?ga=GA1.1.78908494.1728033339&semt=ais_hybrid);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards; 
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="number"], select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            text-align: right;
+        }
+        input[type="number"]:focus, select:focus {
+            border-color: #0056b3;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        .button {
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            margin: 10px 5px;
+            width: 48%;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            opacity: 0; 
+            animation: fadeInResult 0.5s forwards; 
+        }
+        @keyframes fadeInResult {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculator</h1>
+        <img src="palette-calculator-bow-red-background_23-2148182111.avif" alt="Calculator Header" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
+        
+        <form id="calculator-form">
+            <input type="number" id="input1" placeholder="First Number" required>
+            <input type="number" id="input2" placeholder="Second Number" required>
+            <select id="operation" required>
+                <option value="">Select Operation...</option>
+                <option value="ADD">Add</option>
+                <option value="SUBTRACT">Subtract</option>
+                <option value="MULTIPLY">Multiply</option>
+                <option value="DIVIDE">Divide</option>
+            </select>
+            <div>
+                <button type="button" class="button" onclick="calculate()">Submit</button>
+                <button type="button" class="button" onclick="resetForm()">Reset</button>
+            </div>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            const input1 = parseFloat(document.getElementById('input1').value);
+            const input2 = parseFloat(document.getElementById('input2').value);
+            const operation = document.getElementById('operation').value;
+            let result;
+
+            switch (operation) {
+                case 'ADD':
+                    result = input1 + input2;
+                    break;
+                case 'SUBTRACT':
+                    result = input1 - input2;
+                    break;
+                case 'MULTIPLY':
+                    result = input1 * input2;
+                    break;
+                case 'DIVIDE':
+                    result = input2 !== 0 ? (input1 / input2) : 'Cannot divide by zero';
+                    break;
+                default:
+                    result = 'Please select an operation';
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = 'Result: ' + result;
+            resultDiv.style.animation = 'fadeInResult 0.5s forwards'; // Trigger fade-in animation
+        }
+
+        function resetForm() {
+            document.getElementById('calculator-form').reset();
+            document.getElementById('result').innerText = '';
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>
+            Calculator
+        </title>
+        <style>
+            .container{
+                max-width :600px;
+                margin:auto;
+                background-color: whitesmoke;
+                align-items: center;
+                padding: 30px;
+                border-radius :20px;
+                text-align: center;
+                box-shadow:40px 20px 10px rgba(0, 0, 0, 0.1);
+            }
+            /* img{
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            } */
+            input[type="number"],select{
+                width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: right
+            }
+            img.button{
+                cursor: pointer;
+                width: 40px;
+                height: 4px;
+            }
+        </style>
+    </head>
+    <body style="background-image:url(https://img.freepik.com/free-photo/business-office-sence_1387-668.jpg?ga=GA1.1.78908494.1728033339&semt=ais_hybrid);background-size:cover;background-repeat: no-repeat;background-position: center;">
+        <div class="container">
+            <h1 >Calculator</h1>
+            <img src="palette-calculator-bow-red-background_23-2148182111.avif" style="width: 100%; height: auto; border-radius: 10px;">  
+            <input type="text" id="num1" placeholder="First Number" disabled/>
+            <input type="text" id="num2" placeholder="Second number" disabled/>
+            <select id="operation" required>
+                <option value="">Select....</option>
+                <option value="addition">Addition</option>
+                <option value="subtract">Subtract</option>
+                <option value="multiplication">MultiPlication</option>
+                <option value="Division">Division</option>
+            </select>
+        </div>
+    
+
+
+       
+    </body>
+</html> -->

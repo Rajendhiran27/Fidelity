@@ -1,0 +1,3 @@
+SELECT Worker.FIRST_NAME, Worker.SALARY, Title.TITLE
+FROM Worker
+INNER JOIN Title ON Worker.WORKER_ID = Title.WORKER_REF_ID;

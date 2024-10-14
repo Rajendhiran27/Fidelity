@@ -21,3 +21,4 @@ BEGIN
 END;
 $$
 LANGUAGE plpgsql;
+SELECT get_worker_count_by_nth_highest_salary(4);

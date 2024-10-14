@@ -1,1 +1,48 @@
 
+CREATE TABLE Worker (
+    WORKER_ID INT PRIMARY KEY,
+    FIRST_NAME VARCHAR(50),
+    LAST_NAME VARCHAR(50),
+    SALARY INT,
+    JOINING_DATE DATE,
+    DEPARTMENT VARCHAR(50)
+);
+
+INSERT INTO Worker (WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT)
+VALUES
+    (1, 'Monika', 'Arora', 100000, '2023-02-21', 'IT'),
+    (2, 'Niharika', 'Verma', 80000, '2022-06-11', 'IT'),
+    (3, 'Vishal', 'Singh', 300000, '2022-02-18', 'Sales'),
+    (4, 'Amitabh', 'Dwivedi', 500000, '2021-08-14', 'Sales'),
+    (5, 'Satish', 'Kumar', 75000, '2023-04-21', 'Account');
+
+CREATE TABLE Title (
+    WORKER_REF_ID INT,
+    WORKER_TITLE VARCHAR(50),
+    AFFECTED_FROM DATE,
+    FOREIGN KEY (WORKER_REF_ID) REFERENCES Worker(WORKER_ID)
+);
+
+INSERT INTO Title (WORKER_REF_ID, WORKER_TITLE, AFFECTED_FROM)
+VALUES
+    (1, 'Manager', '2016-02-11'),
+    (2, 'Executive', '2016-02-11'),
+    (3, 'Lead', '2016-02-11'),
+    (4, 'Asst. Manager', '2016-02-11'),
+    (5, 'Lead', '2016-02-11');
+
+CREATE TABLE Bonus (
+    BONUS_ID INT PRIMARY KEY,
+    WORKER_REF_ID INT,
+    BONUS_AMOUNT INT,
+    BONUS_DATE DATE,
+    FOREIGN KEY (WORKER_REF_ID) REFERENCES Worker(WORKER_ID)
+);
+
+INSERT INTO Bonus (BONUS_ID, WORKER_REF_ID, BONUS_AMOUNT, BONUS_DATE)
+VALUES
+    (1, 1, 5000, '2020-02-12'),
+    (2, 2, 3000, '2020-06-11'),
+    (3, 3, 4000, '2020-02-18'),
+    (4, 1, 4500, '2020-02-19'),
+    (5, 5, 9500, '2021-03-16');
